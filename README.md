@@ -1,4 +1,3 @@
-
 <html lang="es">
 <head>
   <meta charset="utf-8" />
@@ -81,12 +80,40 @@
 
     <!-- Página sorpresa que desliza desde abajo -->
     <div class="surprise" id="surprise">
+     <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+     
+      <!-- RECUADRO 1 -->
       <div class="box">
-        <h2>¡Sorpresa!</h2>
-        <p>Gracias por seguir las pistas. Te quiero mucho ❤️</p>
-        <p style="font-size:13px;color:#7a7a7a;margin-top:10px">Puedes editar este mensaje desde el código.</p>
+       <h2>¡Sorpresa!</h2>
+       <p>Gracias por seguir las pistas. Te quiero mucho ❤️</p>
+       <p style="font-size:13px;color:#7a7a7a;margin-top:10px">
+        Puedes editar este mensaje desde el código.
+       </p>
       </div>
+      
+      <!-- RECUADRO 2 -->
+      <div class="box">
+       <h2>🎵 Snoopy Music</h2>
+       
+       <!-- Mitad video - mitad foto -->
+       <div style="display:flex; width:100%; gap:10px;">
+        <video src="tocadiscos.mp4" autoplay loop muted style="width:50%; border-radius:12px; object-fit:cover;"></video>
+
+        <img src="foto.png" alt="Tu foto"
+          style="width:50%; border-radius:12px; object-fit:cover;">
+      </div>
+
+      <p style="margin-top:10px; color:#e64a6b; font-weight:600;">
+        Eres una persona muy especial 🤍
+      </p>
+
+      <audio src="cancion.mp3" autoplay loop></audio>
+     </div>
+
     </div>
+   </div>
+
+  
   </main>
   
   <script>
