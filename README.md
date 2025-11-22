@@ -78,17 +78,18 @@
         </div>
       </div>
     </section>
-
-   <div class="screen" id="snoopyMusic">
-    <button onclick="closeScreens()">Volver</button>
-    <h2>🎵 Snoopy Music 🎵</h2>
+    
+    <!-- Página sorpresa que desliza desde abajo -->
+    <div class="screen" id="snoopyMusic">
+     <button onclick="closeScreens()">Volver</button>
+     <h2>🎵 Snoopy Music 🎵</h2>
     <div class="media-row">
      <video id="recordVideo" src="tocadiscos.mp4" autoplay loop muted></video>
      <img class="photo" src="foto.png" alt="Tu foto">
     </div>
     <p class="romantic-text">Eres una persona muy especial. Gracias por cada sonrisa 🤍</p>
     <audio id="snoopySong" src="cancion.mp3" preload="auto"></audio>
-   </div>
+  </div>
   
   <script>
     // Valor del código correcto: cámbialo aquí según quieras
