@@ -72,9 +72,8 @@
       <div class="carousel-wrap" id="carouselWrap">
         <div class="carousel" aria-hidden="false">
           <div class="track" id="track">
-            <<div class="card" data-index="1" style="background:white;padding:10px"><img src="Música snoppy.png" alt="Snoopy" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:10px"></div>
-            <div class="card" data-index="2" style="background:white;padding:10px"><img src="Snoppy.png" alt="Snoopy" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:10px"></div>
-            <div class="card" data-index="3" style="background:white;padding:10px"><img src="Snoppy.png" alt="Snoopy" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:10px"></div>
+            <<div class="card" data-index="1" style="background:white;padding:10px"><img src="Música snoppy.png" alt="Música snoppy" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:10px"></div>
+            <div class="card" data-index="2" style="background:white;padding:10px"><img src="carta de snoppy.png" alt="carta de snoppy" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:10px"></div>
           </div>
         </div>
       </div>
