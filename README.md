@@ -80,15 +80,18 @@
     </section>
 
     <!-- Página sorpresa que desliza desde abajo -->
-    <div class="surprise" id="surprise">
+    <div class="screen" id="snoopyMusic">
       <div class="box">
         <h2>¡Sorpresa!</h2>
-        <p>Gracias por seguir las pistas. Te quiero mucho ❤️</p>
-        <p style="font-size:13px;color:#7a7a7a;margin-top:10px">Puedes editar este mensaje desde el código.</p>
-      </div>
+        <div class="media-row">
+         <video id="recordVideo" src="tocadiscos.mp4" autoplay loop muted></video>
+         <img class="photo" src="foto.png" alt="Tu foto">
+        </div>
+        <p class="romantic-text">Eres una persona muy especial. Gracias por cada sonrisa 🤍</p>
+        <audio id="snoopySong" src="cancion.mp3" preload="auto"></audio>
     </div>
   </main>
-
+  
   <script>
     // Valor del código correcto: cámbialo aquí según quieras
     const SECRET_CODE = '23/11/2024'; // <- editar aquí si quieres otro código (no distingue mayúsculas/minusculas)
