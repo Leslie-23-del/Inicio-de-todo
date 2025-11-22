@@ -80,22 +80,25 @@
 
     <!-- Página sorpresa que desliza desde abajo -->
     <div class="surprise" id="surprise">
-     <div style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center; align-items:flex-start;">
+     <div style="display:flex; width:100%; gap:20px; justify-content:center; align-items:flex-start;">
      
       <!-- RECUADRO 1 -->
-      <div class="box" style="text-align:center;">
-       <img src="foto.png"
-       alt="Imagen sorpresa"
-       style="width:50%; height:auto;border-radius:12px;object-fit:contain;">
-       </p>
+      <div class="box" style="width:50%; text-align:center;">
+      <img src="foto.png"
+           alt="Imagen sorpresa"
+           style="width:100%; height:auto; border-radius:12px; object-fit:contain;">
       </div>
       
       <!-- RECUADRO 2 -->
       <div class="box">
        
        <!-- Mitad video - mitad foto -->
-       <div style="display:flex; width:50%; gap:20px;justify-content:center;align-items:center;">
-        <video src="tocadiscos.mp4" autoplay loop muted style="width:50%; height:auto;border-radius:12px;object-fit:contain;"></video>
+       <<div class="box" style="width:50%; text-align:center;">
+
+      <video src="tocadiscos.mp4"
+             autoplay loop muted
+             style="width:100%; height:auto; border-radius:12px; object-fit:contain;">
+      </video>
 
       <audio src="canción.mp3" autoplay loop></audio>
      </div>
