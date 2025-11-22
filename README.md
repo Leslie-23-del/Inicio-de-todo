@@ -96,7 +96,7 @@
        
        <!-- Mitad video - mitad foto -->
        <div style="display:flex; width:100%; gap:10px;">
-        <video src="tocadiscos.mp4" autoplay loop muted style="width:50%; border-radius:12px; object-fit:cover;"></video>
+        <video src="tocadiscos.mp4" autoplay loop muted style="width:100%; border-radius:12px; object-fit:cover;"></video>
 
         <img src="foto.png" alt="Tu foto"
           style="width:50%; border-radius:12px; object-fit:cover;">
