@@ -86,7 +86,7 @@
       <div class="box" style="text-align:center;">
        <img src="foto.png"
        alt="Imagen sorpresa"
-       style="width:100%;border-radius:12px; object-fit:contain;">
+       style="width:50%; height:auto;border-radius:12px;object-fit:contain;">
        </p>
       </div>
       
