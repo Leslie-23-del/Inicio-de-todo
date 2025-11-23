@@ -169,10 +169,10 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
 <!-- Nueva página sorpresa para la carta -->
 <div class="surprise" id="surpriseCarta">
   <div class="box" style="max-width:500px; text-align:center; margin:auto;">
-    <h2>¡Carta especial! ✨</h2>
-    <p>Aquí puedes añadir cualquier mensaje, imagen o enlace que quieras mostrar.</p>
+    <h2>Feliz un año amor de mi vida</h2>
+    <p>Hoy hace un año, un lazo inexistente a nuestra vista —pero tan notorio para nuestros corazones— nos unió. No por motivos ajenos, ni por promesas falsas, ni por sentimientos vacíos, sino por lo más puro que nació ese día entre los dos: esa conexión que siempre ha estado allí. Y sinceramente, hasta hoy, no me arrepiento de nada. No me arrepiento de las lágrimas, ni de las risas, ni de las promesas llenas de amor, ni de todo lo que hemos compartido, ni de cada parte de ti que me has entregado. A veces quisiera decirte tantas cosas, pero cuando se trata de ti nunca supe cómo expresarme, porque ninguna palabra alcanza para explicar lo que me hiciste sentir todo este año. Cuando mis ojos se llenan de lágrimas, no es por tristeza, sino porque ahí se esconde lo que no sé decir: son palabras silenciosas de todo lo que podría confesarte sin hablar. Y aun así, nunca pienses que no te amo por no decirte siempre palabras bonitas; porque incluso en mi llanto te digo “te amo” de todas las formas que mi corazón encuentra. Nunca supe cómo expresarme, y aun así tú entendiste todo lo que mi silencio intentaba decir. Y hoy, después de todo, solo me queda agradecerte: agradecerte por este año, por haber estado conmigo a pesar de todo, sin que tambalearan tus sentimientos por mí, por nunca dejarme sola, por siempre sacarme una sonrisa, pero sobre todo, gracias por dejarme amarte. Te amo, pedacito. Felices 1 año para ti y para mí..</p>
     <img src="carta-sorpresa.png" alt="Carta sorpresa" style="width:100%; border-radius:12px; margin:10px 0;">
-    <p>¡Disfruta esta pequeña sorpresa! 💌</p>
+    <p>De:Leslie</p>
     <button onclick="
       surpriseCarta.classList.remove('show');
       carouselWrap.style.display='block';
