@@ -95,8 +95,8 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
 <div class="carousel-wrap" id="carouselWrap">
   <div class="carousel" aria-hidden="false">
     <div class="track" id="track">
-      <div class="card" data-index="1" style="background:white;padding:10px"><img src="sonido.png" alt="Música snoppy" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:10px"></div>
-      <div class="card" data-index="2" style="background:white;padding:10px"><img src="carta.png" alt="carta de snoppy" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:10px"></div>
+      <div class="card" data-index="1" style="background:white;padding:10px"><img src="sonido.png" alt="sonido" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:10px"></div>
+      <div class="card" data-index="2" style="background:white;padding:10px"><img src="carta.png" alt="carta" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:10px"></div>
     </div>
   </div>
 </div>
