@@ -145,7 +145,30 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
         height: 30px;
     "></audio>
   </div>
-
+  
+  <!-- BOTÓN DE REGRESO -->
+  <button onclick="window.history.back()" style="
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #f8c8d8; /* rosa pastel */
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 20px auto;
+">
+    <!-- Flecha pequeña -->
+    <span style="
+        display: inline-block;
+        transform: rotate(180deg); /* flecha apuntando a la izquierda */
+        font-weight: bold;
+        font-size: 16px;
+    ">&#10148;</span>
+    Volver
+</button>
 </div>
 </main>
 
