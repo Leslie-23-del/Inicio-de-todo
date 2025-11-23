@@ -103,7 +103,7 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
 </div>
 </section>
 
-<!-- Página sorpresa -->
+<!-- Página sorpresa (invisible hasta que se pulse tarjeta sonido) -->
 <div class="surprise" id="surprise">
   <div style="display:flex; gap:15px; justify-content:center; align-items:stretch; flex-wrap:wrap; max-width:600px; margin:auto; position:relative; z-index:10;">
  
@@ -147,7 +147,7 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
     "></audio>
   </div>
   
-  <!-- BOTÓN DE REGRESO INTEGRADO FUNCIONAL -->
+  <!-- BOTÓN DE REGRESO FUNCIONAL -->
   <button onclick="
     surprise.classList.remove('show');
     carouselWrap.style.display='block';
@@ -205,14 +205,20 @@ checkBtn.addEventListener('click', ()=>{
 
 codeInput.addEventListener('keyup',(e)=>{ if(e.key === 'Enter') checkBtn.click(); });
 
+// SOLO mostrar sorpresa al pulsar la tarjeta "sonido"
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', ()=>{
-    card.style.transformOrigin = 'center bottom';
-    card.animate([{ transform: 'scale(1)' },{ transform: 'scale(1.05,0.6)' },{ transform: 'scale(1)' }],{ duration:450, easing:'ease' });
-    setTimeout(()=>{
-      surprise.classList.add('show');
-      track.style.animationPlayState='paused';
-    },460);
+    if(card.dataset.index === "1"){ // tarjeta sonido
+      card.style.transformOrigin = 'center bottom';
+      card.animate([{ transform: 'scale(1)' },{ transform: 'scale(1.05,0.6)' },{ transform: 'scale(1)' }],{ duration:450, easing:'ease' });
+      setTimeout(()=>{
+        surprise.classList.add('show');
+        track.style.animationPlayState='paused';
+      },460);
+    } else {
+      // tarjeta carta: no hace nada por ahora
+      alert("Aquí irá otra sorpresa más adelante");
+    }
   });
 });
 </script>
