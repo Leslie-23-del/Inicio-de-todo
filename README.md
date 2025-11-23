@@ -122,9 +122,28 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
   </div>
 
   <!-- REPRODUCTOR DE MUSICA DEBAJO -->
-  <div class="player-dibujo">
-    <div class="play-icon"></div>
-    <audio src="lala.mp3" controls></audio>
+  <div class="player-dibujo" style="
+    width: 200px;       /* Ancho del recuadro */
+    height: 100px;      /* Alto del recuadro */
+    margin: 20px auto;  /* Centrado debajo de las imágenes */
+    padding: 10px;
+    border: 2px dashed #e64a6b; /* Estilo tipo dibujo */
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff0f2;">
+    <div class="play-icon" style="
+        width: 30px;
+        height: 30px;
+        background: #e64a6b;
+        clip-path: polygon(0 0, 100% 50%, 0 100%);
+        margin-bottom: 8px;"></div>
+    <audio src="lala.mp3" controls style="
+        width: 90%;       /* Reproductor más pequeño */
+        height: 30px;
+    "></audio>
   </div>
 
 </div>
