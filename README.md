@@ -1,4 +1,3 @@
-
 <html lang="es">
 <head>
 <meta charset="utf-8" />
@@ -103,26 +102,23 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
 </div>
 </section>
 
-<!-- Página sorpresa -->
+<!-- Página sorpresa general -->
 <div class="surprise" id="surprise">
   <div style="display:flex; gap:15px; justify-content:center; align-items:stretch; flex-wrap:wrap; max-width:600px; margin:auto; position:relative; z-index:10;">
- 
     <!-- RECUADRO 1: Foto -->
     <div class="box" style="width:45%; text-align:center;min-height:400px;">
       <img src="foto.png" alt="Imagen sorpresa"
            style="width:100%; max-height:400px; object-fit:cover; border-radius:12px; position:relative; z-index:10;">
     </div>
-  
     <!-- RECUADRO 2: Video -->
     <div class="box" style="width:45%; text-align:center; min-height:400px;">
       <video src="tocadiscos.mp4" autoplay loop muted
              style="width:100%; height:400px; border-radius:12px; object-fit:cover; background:black; position:relative; z-index:10;">
       </video>
     </div>
-
   </div>
 
-  <!-- REPRODUCTOR DE MUSICA DEBAJO -->
+  <!-- Reproductor de musica de dibujo -->
   <div class="player-dibujo" style="
     width: 200px;
     height: 100px;
@@ -146,8 +142,7 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
         height: 30px;
     "></audio>
   </div>
-  
-  <!-- BOTÓN DE REGRESO INTEGRADO FUNCIONAL -->
+
   <button onclick="
     surprise.classList.remove('show');
     carouselWrap.style.display='block';
@@ -170,6 +165,28 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
     Volver
 </button>
 </div>
+
+<!-- Nueva página sorpresa para la carta -->
+<div class="surprise" id="surpriseCarta">
+  <div class="box" style="max-width:500px; text-align:center; margin:auto;">
+    <h2>¡Carta especial! ✨</h2>
+    <p>Aquí puedes añadir cualquier mensaje, imagen o enlace que quieras mostrar.</p>
+    <img src="carta-sorpresa.png" alt="Carta sorpresa" style="width:100%; border-radius:12px; margin:10px 0;">
+    <p>¡Disfruta esta pequeña sorpresa! 💌</p>
+    <button onclick="
+      surpriseCarta.classList.remove('show');
+      carouselWrap.style.display='block';
+      track.style.animationPlayState='running';
+      setTimeout(()=>{carouselWrap.scrollIntoView({behavior:'smooth'});},50);
+    " style="
+      display:flex; justify-content:center; margin:auto; gap:6px;
+      background-color:#f8c8d8; color:#fff; border:none; padding:6px 12px;
+      border-radius:8px; cursor:pointer; font-size:14px;">
+      <span style="display:inline-block; transform:rotate(180deg); font-weight:bold;">&#10148;</span> Volver
+    </button>
+  </div>
+</div>
+
 </main>
 
 <script>
@@ -181,6 +198,7 @@ const codeInput = document.getElementById('codeInput');
 const carouselWrap = document.getElementById('carouselWrap');
 const track = document.getElementById('track');
 const surprise = document.getElementById('surprise');
+const surpriseCarta = document.getElementById('surpriseCarta');
 
 openBtn.addEventListener('click', ()=>{
   openBtn.style.display='none';
@@ -209,9 +227,16 @@ document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', ()=>{
     card.style.transformOrigin = 'center bottom';
     card.animate([{ transform: 'scale(1)' },{ transform: 'scale(1.05,0.6)' },{ transform: 'scale(1)' }],{ duration:450, easing:'ease' });
+
     setTimeout(()=>{
-      surprise.classList.add('show');
-      track.style.animationPlayState='paused';
+      if(card.dataset.index == "2"){ // tarjeta de la carta
+        carouselWrap.style.display='none';
+        surpriseCarta.classList.add('show');
+        track.style.animationPlayState='paused';
+      } else {
+        surprise.classList.add('show'); // el resto sigue mostrando la sorpresa original
+        track.style.animationPlayState='paused';
+      }
     },460);
   });
 });
