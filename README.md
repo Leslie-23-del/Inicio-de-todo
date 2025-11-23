@@ -1,3 +1,4 @@
+
 <html lang="es">
 <head>
 <meta charset="utf-8" />
@@ -146,12 +147,12 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
     "></audio>
   </div>
   
-  <!-- BOTÓN DE REGRESO INTEGRADO -->
+  <!-- BOTÓN DE REGRESO INTEGRADO FUNCIONAL -->
   <button onclick="
     surprise.classList.remove('show');
-    carouselWrap.style.display = 'block';
-    track.style.animationPlayState = 'running';
-    carouselWrap.scrollIntoView({behavior:'smooth'});
+    carouselWrap.style.display='block';
+    track.style.animationPlayState='running';
+    setTimeout(()=>{carouselWrap.scrollIntoView({behavior:'smooth'});},50);
   " style="
     display: flex;
     align-items: center;
