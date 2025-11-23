@@ -107,15 +107,15 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
   <div style="display:flex; gap:15px; justify-content:center; align-items:stretch; flex-wrap:wrap; max-width:600px; margin:auto; position:relative; z-index:10;">
  
     <!-- RECUADRO 1: Foto -->
-    <div class="box" style="width:45%; text-align:center;min-height:250px;">
+    <div class="box" style="width:45%; text-align:center;min-height:400px;">
       <img src="foto.png" alt="Imagen sorpresa"
-           style="width:100%; max-height:200px; object-fit:cover; border-radius:12px; position:relative; z-index:10;">
+           style="width:100%; max-height:400px; object-fit:cover; border-radius:12px; position:relative; z-index:10;">
     </div>
   
     <!-- RECUADRO 2: Video -->
-    <div class="box" style="width:45%; text-align:center; min-height:250px;">
+    <div class="box" style="width:45%; text-align:center; min-height:400px;">
       <video src="tocadiscos.mp4" autoplay loop muted
-             style="width:100%; height:200px; border-radius:12px; object-fit:cover; background:black; position:relative; z-index:10;">
+             style="width:100%; height:400px; border-radius:12px; object-fit:cover; background:black; position:relative; z-index:10;">
       </video>
     </div>
 
