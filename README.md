@@ -73,18 +73,6 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
   clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
   background:#e64a6b;
 }
-
-/* Buzón y tarjeta */
-.buzon-container { position: relative; width:300px; margin:20px auto; display:none; }
-.buzon { width:100%; height:150px; background:#e64a6b; border-radius:12px; display:flex; justify-content:center; align-items:flex-end; cursor:pointer; position:relative; }
-.tarjeta-cerrada { width:80px; height:50px; background:#fff0f2; border:2px dashed #fff; border-radius:6px; margin-bottom:10px; transition: transform 0.3s; }
-.tarjeta-abierta { position:absolute; top:0; left:50%; transform:translateX(-50%) scale(0); width:320px; height:150px; display:flex; border-radius:12px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.2); transition:transform 0.5s; }
-.tarjeta-abierta.show { transform:translateX(-50%) scale(1); }
-.tarjeta-abierta .lado { width:50%; height:100%; }
-.tarjeta-abierta .foto { background:#fff0f2; }
-.tarjeta-abierta .foto img { width:100%; height:100%; object-fit:cover; }
-.tarjeta-abierta .texto { background:#fff; display:flex; align-items:center; justify-content:center; padding:10px; font-size:14px; }
-.tarjeta-abierta button { position:absolute; bottom:5px; right:5px; padding:4px 8px; background:#e64a6b; color:white; border:none; border-radius:6px; cursor:pointer; }
 </style>
 </head>
 <body>
@@ -114,50 +102,42 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
 </div>
 </section>
 
-<!-- Página sorpresa (oculta hasta hacer clic en sonido) -->
-<div class="surprise" id="surprise" style="display:none;">
+<!-- Página sorpresa sonido -->
+<div class="surprise" id="surpriseSonido" style="display:none;">
   <div style="display:flex; gap:15px; justify-content:center; align-items:stretch; flex-wrap:wrap; max-width:600px; margin:auto; position:relative; z-index:10;">
-    <!-- RECUADRO 1: Foto -->
     <div class="box" style="width:45%; text-align:center;min-height:400px;">
-      <img src="foto.png" alt="Imagen sorpresa"
-           style="width:100%; max-height:400px; object-fit:cover; border-radius:12px; position:relative; z-index:10;">
+      <img src="foto.png" alt="Imagen sorpresa" style="width:100%; max-height:400px; object-fit:cover; border-radius:12px; position:relative; z-index:10;">
     </div>
-  
-    <!-- RECUADRO 2: Video -->
     <div class="box" style="width:45%; text-align:center; min-height:400px;">
-      <video src="tocadiscos.mp4" autoplay loop muted
-             style="width:100%; height:400px; border-radius:12px; object-fit:cover; background:black; position:relative; z-index:10;">
-      </video>
+      <video src="tocadiscos.mp4" autoplay loop muted style="width:100%; height:400px; border-radius:12px; object-fit:cover; background:black; position:relative; z-index:10;"></video>
     </div>
   </div>
-
-  <!-- REPRODUCTOR DE MUSICA DEBAJO -->
   <div class="player-dibujo" style="width:200px; height:100px; margin:20px auto; padding:10px; border:2px dashed #e64a6b; border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#fff0f2;">
     <div class="play-icon" style="width:30px; height:30px; background:#e64a6b; clip-path: polygon(0 0, 100% 50%, 0 100%); margin-bottom:8px;"></div>
     <audio src="lala.mp3" controls style="width:90%; height:30px;"></audio>
   </div>
-  
-  <!-- BOTÓN DE REGRESO -->
-  <button id="backBtn" style="display:flex; align-items:center; gap:6px; background-color:#f8c8d8; color:#fff; border:none; padding:6px 12px; border-radius:8px; font-size:14px; cursor:pointer; margin:20px auto;">
+  <button class="backBtn" style="display:flex; align-items:center; gap:6px; background-color:#f8c8d8; color:#fff; border:none; padding:6px 12px; border-radius:8px; font-size:14px; cursor:pointer; margin:20px auto;">
     <span style="display:inline-block; transform:rotate(180deg); font-weight:bold; font-size:16px;">&#10148;</span> Volver
   </button>
 </div>
 
-<!-- Contenido Carta con buzón -->
-<div id="contenidoCarta" class="buzon-container">
-  <div class="buzon" onclick="abrirTarjeta()">
-    <div class="tarjeta-cerrada" id="tarjetaCerrada"></div>
-  </div>
-
-  <div class="tarjeta-abierta" id="tarjetaAbierta">
-    <div class="lado foto">
-      <img src="foto.png" alt="Foto" />
+<!-- Página sorpresa carta -->
+<div class="surprise" id="surpriseCarta" style="display:none;">
+  <div style="display:flex; gap:15px; justify-content:center; align-items:center; flex-wrap:wrap; max-width:400px; margin:auto; position:relative; z-index:10;">
+    <div class="buzon-container" style="position:relative; width:300px;">
+      <div class="buzon" onclick="abrirTarjeta()" style="width:100%; height:150px; background:#e64a6b; border-radius:12px; display:flex; justify-content:center; align-items:flex-end; cursor:pointer;">
+        <div class="tarjeta-cerrada" id="tarjetaCerrada" style="width:80px; height:50px; background:#fff0f2; border:2px dashed #fff; border-radius:6px; margin-bottom:10px;"></div>
+      </div>
+      <div class="tarjeta-abierta" id="tarjetaAbierta" style="position:absolute; top:0; left:50%; transform:translateX(-50%) scale(0); width:320px; height:150px; display:flex; border-radius:12px; overflow:hidden; box-shadow:0 8px 20px rgba(0,0,0,0.2); transition:transform 0.5s;">
+        <div class="lado foto" style="width:50%; height:100%; background:#fff0f2;"><img src="foto.png" style="width:100%; height:100%; object-fit:cover;"></div>
+        <div class="lado texto" style="width:50%; height:100%; background:#fff; display:flex; align-items:center; justify-content:center; padding:10px; font-size:14px;"><p>¡Aquí está tu mensaje secreto!</p></div>
+        <button onclick="cerrarTarjeta()" style="position:absolute; bottom:5px; right:5px; padding:4px 8px; background:#e64a6b; color:white; border:none; border-radius:6px; cursor:pointer;">Cerrar</button>
+      </div>
     </div>
-    <div class="lado texto">
-      <p>¡Aquí está tu mensaje secreto!</p>
-    </div>
-    <button onclick="cerrarTarjeta()">Cerrar</button>
   </div>
+  <button class="backBtn" style="display:flex; align-items:center; gap:6px; background-color:#f8c8d8; color:#fff; border:none; padding:6px 12px; border-radius:8px; font-size:14px; cursor:pointer; margin:20px auto;">
+    <span style="display:inline-block; transform:rotate(180deg); font-weight:bold; font-size:16px;">&#10148;</span> Volver
+  </button>
 </div>
 
 </main>
@@ -170,9 +150,11 @@ const checkBtn = document.getElementById('checkBtn');
 const codeInput = document.getElementById('codeInput');
 const carouselWrap = document.getElementById('carouselWrap');
 const track = document.getElementById('track');
-const surprise = document.getElementById('surprise');
-const backBtn = document.getElementById('backBtn');
-const contenidoCarta = document.getElementById('contenidoCarta');
+
+const surpriseSonido = document.getElementById('surpriseSonido');
+const surpriseCarta = document.getElementById('surpriseCarta');
+
+// Tarjeta buzón
 const tarjetaAbierta = document.getElementById('tarjetaAbierta');
 const tarjetaCerrada = document.getElementById('tarjetaCerrada');
 
@@ -206,37 +188,42 @@ document.querySelectorAll('.card').forEach(card => {
       card.style.transformOrigin = 'center bottom';
       card.animate([{ transform: 'scale(1)' },{ transform: 'scale(1.05,0.6)' },{ transform: 'scale(1)' }],{ duration:450, easing:'ease' });
       setTimeout(()=>{
-        surprise.style.display = 'flex';
-        surprise.classList.add('show');
+        surpriseSonido.style.display = 'flex';
+        surpriseSonido.classList.add('show');
         carouselWrap.style.display = 'none';
         track.style.animationPlayState='paused';
       },460);
     } else if(card.dataset.index === "2"){ // tarjeta carta
-      contenidoCarta.style.display = 'block';
+      surpriseCarta.style.display = 'flex';
+      surpriseCarta.classList.add('show');
+      carouselWrap.style.display = 'none';
+      track.style.animationPlayState='paused';
     }
   });
 });
 
 // Botón volver
-backBtn.addEventListener('click', ()=>{
-  surprise.style.display = 'none';
-  carouselWrap.style.display = 'block';
-  track.style.animationPlayState='running';
-  setTimeout(()=>{carouselWrap.scrollIntoView({behavior:'smooth'});},50);
+document.querySelectorAll('.backBtn').forEach(btn => {
+  btn.addEventListener('click', ()=>{
+    surpriseSonido.style.display = 'none';
+    surpriseCarta.style.display = 'none';
+    carouselWrap.style.display = 'block';
+    track.style.animationPlayState='running';
+    setTimeout(()=>{carouselWrap.scrollIntoView({behavior:'smooth'});},50);
+  });
 });
 
 // Funciones buzón
 function abrirTarjeta() {
   tarjetaAbierta.classList.add('show');
   tarjetaCerrada.style.transform = 'translateY(-120px)';
-  carouselWrap.style.display = 'none';
 }
 
 function cerrarTarjeta() {
   tarjetaAbierta.classList.remove('show');
   tarjetaCerrada.style.transform = 'translateY(0)';
-  carouselWrap.style.display = 'block';
 }
 </script>
 </body>
 </html>
+****
