@@ -38,41 +38,68 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
 .squash{animation:squash .45s ease forwards}
 @keyframes squash{0%{transform:scale(1)}50%{transform:scale(1.05,0.75)}100%{transform:scale(1,1)}}
 
-/* Slide to surprise */
+/* Carta deslizante */
+.carta {
+  position: fixed;
+  bottom: -100vh;
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+  width: 320px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 18px 45px rgba(230,74,107,0.22);
+  text-align: center;
+  transition: bottom .8s cubic-bezier(.22,1,.36,1);
+  z-index: 2000;
+}
+
+.carta.show {
+  bottom: 10vh;
+}
+
+/* efecto hoja doblada */
+.carta::before{
+  content:'';
+  position:absolute;
+  top:-18px;
+  left:0;
+  width:100%;
+  height:18px;
+  background:#fff;
+  border-bottom:2px solid rgba(0,0,0,0.1);
+  transform:scaleY(.5);
+  transform-origin:top;
+  border-radius:12px 12px 0 0;
+}
+
+.carta img {
+  width:100%;
+  border-radius:12px;
+  margin-bottom:10px;
+}
+
+.carta button {
+  margin-top:10px;
+  background:var(--accent);
+  color:white;
+  border:0;
+  padding:10px 16px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* Surprise page */
 .surprise{position:fixed;inset:0;background:linear-gradient(180deg,#fff7f8,#ffeef4);display:flex;align-items:center;justify-content:center;flex-direction:column;transform:translateY(110vh);transition:transform .7s cubic-bezier(.22,1,.36,1)}
 .surprise.show{transform:translateY(0)}
-.surprise .box{background:white;padding:28px;border-radius:18px;box-shadow:0 18px 50px rgba(230,74,107,0.12);text-align:center}
-.surprise h2{color:var(--accent);margin:0 0 8px}
-.surprise p{color:var(--muted);margin:0 0 12px}
 
-/* small */
-@media (max-width:600px){.track{padding:12px}.card{min-width:200px}}
-
-/* Reproductor estilo dibujo debajo */
 .player-dibujo {
-  width:10cm;
-  height:5cm;
-  background:#fff0f2;
-  border:3px dashed #e64a6b;
-  border-radius:12px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  box-shadow:0 6px 16px rgba(230,74,107,0.3);
-  margin-top:15px;
+  width:10cm;height:5cm;background:#fff0f2;border:3px dashed #e64a6b;border-radius:12px;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  box-shadow:0 6px 16px rgba(230,74,107,0.3);margin-top:15px;
 }
-.player-dibujo audio {
-  width:90%;
-  border-radius:8px;
-}
-.play-icon {
-  width:30px;
-  height:30px;
-  margin-bottom:8px;
-  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-  background:#e64a6b;
-}
+
+.play-icon{width:30px;height:30px;margin-bottom:8px;clip-path: polygon(0% 0%, 100% 50%, 0% 100%);background:#e64a6b;}
 </style>
 </head>
 <body>
@@ -91,9 +118,9 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
   <div class="hint">Pista: Es una fecha muy importante para los dos.</div>
 </div>
 
-<!-- Carousel oculto inicialmente -->
+<!-- Carousel -->
 <div class="carousel-wrap" id="carouselWrap">
-  <div class="carousel" aria-hidden="false">
+  <div class="carousel">
     <div class="track" id="track">
       <div class="card" data-index="1" style="background:white;padding:10px"><img src="sonido.png" alt="sonido" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:10px"></div>
       <div class="card" data-index="2" style="background:white;padding:10px"><img src="carta.png" alt="carta" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:10px"></div>
@@ -102,72 +129,40 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
 </div>
 </section>
 
-<!-- Página sorpresa -->
+<!-- CARTA DESLIZANTE -->
+<div class="carta" id="cartaMsg">
+  <img src="cartaabierta.png" alt="Carta romántica">
+  <p style="color:#6b6b6b; font-size:15px">
+    Aquí estoy… saliendo desde tu toque,  
+    como un susurro que despierta cuando tu dedo me llama.
+  </p>
+  <button onclick="cartaMsg.classList.remove('show')">Cerrar</button>
+</div>
+
+<!-- Página sorpresa original -->
 <div class="surprise" id="surprise">
   <div style="display:flex; gap:15px; justify-content:center; align-items:stretch; flex-wrap:wrap; max-width:600px; margin:auto; position:relative; z-index:10;">
- 
-    <!-- RECUADRO 1: Foto -->
-    <div class="box" style="width:45%; text-align:center;min-height:400px;">
-      <img src="foto.png" alt="Imagen sorpresa"
-           style="width:100%; max-height:400px; object-fit:cover; border-radius:12px; position:relative; z-index:10;">
+
+    <div class="box" style="width:45%; min-height:400px;">
+      <img src="foto.png" style="width:100%; height:400px; object-fit:cover; border-radius:12px;">
     </div>
-  
-    <!-- RECUADRO 2: Video -->
-    <div class="box" style="width:45%; text-align:center; min-height:400px;">
-      <video src="tocadiscos.mp4" autoplay loop muted
-             style="width:100%; height:400px; border-radius:12px; object-fit:cover; background:black; position:relative; z-index:10;">
-      </video>
+
+    <div class="box" style="width:45%; min-height:400px;">
+      <video src="tocadiscos.mp4" autoplay loop muted style="width:100%; height:400px; border-radius:12px; object-fit:cover;"></video>
     </div>
 
   </div>
 
-  <!-- REPRODUCTOR DE MUSICA DEBAJO -->
-  <div class="player-dibujo" style="
-    width: 200px;
-    height: 100px;
-    margin: 20px auto;
-    padding: 10px;
-    border: 2px dashed #e64a6b;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #fff0f2;">
-    <div class="play-icon" style="
-        width: 30px;
-        height: 30px;
-        background: #e64a6b;
-        clip-path: polygon(0 0, 100% 50%, 0 100%);
-        margin-bottom: 8px;"></div>
-    <audio src="lala.mp3" controls style="
-        width: 90%;
-        height: 30px;
-    "></audio>
+  <div class="player-dibujo" style="width:200px;height:100px;">
+    <div class="play-icon"></div>
+    <audio src="lala.mp3" controls style="width:90%;"></audio>
   </div>
-  
-  <!-- BOTÓN DE REGRESO INTEGRADO FUNCIONAL -->
-  <button onclick="
-    surprise.classList.remove('show');
-    carouselWrap.style.display='block';
-    track.style.animationPlayState='running';
-    setTimeout(()=>{carouselWrap.scrollIntoView({behavior:'smooth'});},50);
-  " style="
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background-color: #f8c8d8;
-    color: #fff;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    margin: 20px auto;
-">
-    <span style="display: inline-block; transform: rotate(180deg); font-weight: bold; font-size: 16px;">&#10148;</span>
+
+  <button onclick="surprise.classList.remove('show');carouselWrap.style.display='block';track.style.animationPlayState='running';setTimeout(()=>{carouselWrap.scrollIntoView({behavior:'smooth'});},50);" 
+  style="background:#f8c8d8;color:#fff;border:0;padding:6px 12px;border-radius:8px;margin:20px auto;">
+    <span style="transform:rotate(180deg);font-weight:bold;font-size:16px;">&#10148;</span>
     Volver
-</button>
+  </button>
 </div>
 </main>
 
@@ -180,6 +175,7 @@ const codeInput = document.getElementById('codeInput');
 const carouselWrap = document.getElementById('carouselWrap');
 const track = document.getElementById('track');
 const surprise = document.getElementById('surprise');
+const cartaMsg = document.getElementById('cartaMsg');
 
 openBtn.addEventListener('click', ()=>{
   openBtn.style.display='none';
@@ -207,9 +203,17 @@ codeInput.addEventListener('keyup',(e)=>{ if(e.key === 'Enter') checkBtn.click()
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', ()=>{
     card.style.transformOrigin = 'center bottom';
-    card.animate([{ transform: 'scale(1)' },{ transform: 'scale(1.05,0.6)' },{ transform: 'scale(1)' }],{ duration:450, easing:'ease' });
+
+    // animación de aplastado
+    card.animate([
+      { transform: 'scale(1)' },
+      { transform: 'scale(1.05,0.6)' },
+      { transform: 'scale(1)' }
+    ],{ duration:450, easing:'ease' });
+
+    // mostrar la carta deslizante
     setTimeout(()=>{
-      surprise.classList.add('show');
+      cartaMsg.classList.add('show');
       track.style.animationPlayState='paused';
     },460);
   });
