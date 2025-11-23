@@ -114,14 +114,13 @@
                object-fit:cover;
                background:black;position:relative;z-index:10;">
       </video>
-      
+    </div>
+    
       <!-- RECUADRO 3: reproductor con estilo dibujo -->
       <div class="box" style="width:45%; text-align:center; min-height:500px; display:flex; flex-direction:column; justify-content:center; align-items:center; background:#fff0f2; border:2px dashed #e64a6b; filter:drop-shadow(0 4px 12px rgba(230,74,107,0.3));">
          <p style="color:#e64a6b; font-weight:600; margin-bottom:15px;">🎵 Reproductor sorpresa 🎵</p>
          <audio src="lala.mp3" controls style="width:80%; border-radius:12px; background:#ffeef4; box-shadow:0 4px 8px rgba(0,0,0,0.1);"></audio>
       </div>
-
-</div>
 
       
      </div>
