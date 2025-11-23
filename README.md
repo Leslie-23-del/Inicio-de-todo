@@ -46,7 +46,9 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
 .surprise p{color:var(--muted);margin:0 0 12px}
 
 /* small */
-@media (max-width:600px){.track{padding:12px}.card{min-width:200px}}
+@media (max-width:600px){.track{padding:12px}.card{min-width:200px}.surprise .box{width:90%; min-height:auto; margin-bottom:15px;}
+  .player-dibujo{width:90%; height:auto; padding:12px;}
+  video{height:auto;}}
 
 /* Reproductor estilo dibujo debajo */
 .player-dibujo {
