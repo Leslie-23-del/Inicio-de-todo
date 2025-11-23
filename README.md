@@ -1,3 +1,4 @@
+
 <html lang="es">
 <head>
 <meta charset="utf-8" />
@@ -48,7 +49,7 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
 /* small */
 @media (max-width:600px){.track{padding:12px}.card{min-width:200px}}
 
-/* reproductor */
+/* Reproductor estilo dibujo debajo */
 .player-dibujo {
   width:10cm;
   height:5cm;
@@ -73,65 +74,6 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
   clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
   background:#e64a6b;
 }
-
-/* --- INTEGRACIÓN BUZÓN ESTILO IMAGEN --- */
-.buzon-real{
-  width:260px;
-  height:180px;
-  background:#e64a6b;
-  border-radius:140px 140px 18px 18px;
-  position:relative;
-  padding-top:20px;
-  overflow:visible;
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);
-  cursor:pointer;
-}
-.buzon-real::after{
-  content:"";
-  position:absolute;
-  bottom:-12px;
-  left:50%;
-  transform:translateX(-50%);
-  width:260px;
-  height:40px;
-  background:#e64a6b;
-  border-radius:0 0 22px 22px;
-}
-.poste-real{
-  width:40px;
-  height:180px;
-  background:#3b3b3b;
-  margin:0 auto;
-  border-radius:8px;
-}
-.carta-real{
-  width:110px;
-  position:absolute;
-  top:40px;
-  left:75px;
-  cursor:pointer;
-  transition:transform .7s ease, opacity .7s ease;
-}
-.carta-real.abrir{
-  transform:translateY(-140px) scale(.8);
-  opacity:0;
-}
-.tarjeta-real{
-  position:absolute;
-  top:20px;
-  left:50%;
-  transform:translateX(-50%) scale(0);
-  width:260px;
-  height:150px;
-  background:white;
-  border-radius:12px;
-  padding:18px;
-  box-shadow:0 18px 40px rgba(0,0,0,0.18);
-  transition:transform .7s ease;
-}
-.tarjeta-real.mostrar{
-  transform:translateX(-50%) scale(1);
-}
 </style>
 </head>
 <body>
@@ -150,75 +92,84 @@ button.btn{background:var(--accent);color:white;border:0;padding:12px 20px;borde
   <div class="hint">Pista: Es una fecha muy importante para los dos.</div>
 </div>
 
+<!-- Carousel oculto inicialmente -->
 <div class="carousel-wrap" id="carouselWrap">
   <div class="carousel" aria-hidden="false">
     <div class="track" id="track">
-      <div class="card" data-index="1" style="background:white;padding:10px"><img src="sonido.png"></div>
-      <div class="card" data-index="2" style="background:white;padding:10px"><img src="carta.png"></div>
+      <div class="card" data-index="1" style="background:white;padding:10px"><img src="sonido.png" alt="sonido" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:10px"></div>
+      <div class="card" data-index="2" style="background:white;padding:10px"><img src="carta.png" alt="carta" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:10px"></div>
     </div>
   </div>
 </div>
 </section>
 
-<!-- sorpresa sonido -->
-<div class="surprise" id="surpriseSonido" style="display:none;">
+<!-- Página sorpresa -->
+<div class="surprise" id="surprise">
   <div style="display:flex; gap:15px; justify-content:center; align-items:stretch; flex-wrap:wrap; max-width:600px; margin:auto; position:relative; z-index:10;">
+ 
+    <!-- RECUADRO 1: Foto -->
     <div class="box" style="width:45%; text-align:center;min-height:400px;">
-      <img src="foto.png" style="width:100%; height:400px; object-fit:cover; border-radius:12px;">
+      <img src="foto.png" alt="Imagen sorpresa"
+           style="width:100%; max-height:400px; object-fit:cover; border-radius:12px; position:relative; z-index:10;">
     </div>
+  
+    <!-- RECUADRO 2: Video -->
     <div class="box" style="width:45%; text-align:center; min-height:400px;">
-      <video src="tocadiscos.mp4" autoplay loop muted style="width:100%; height:400px; border-radius:12px;"></video>
+      <video src="tocadiscos.mp4" autoplay loop muted
+             style="width:100%; height:400px; border-radius:12px; object-fit:cover; background:black; position:relative; z-index:10;">
+      </video>
     </div>
+
   </div>
-  <div class="player-dibujo" style="width:200px; height:100px; margin:20px auto;">
-    <div class="play-icon"></div>
-    <audio src="lala.mp3" controls style="width:90%; height:30px;"></audio>
+
+  <!-- REPRODUCTOR DE MUSICA DEBAJO -->
+  <div class="player-dibujo" style="
+    width: 200px;
+    height: 100px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 2px dashed #e64a6b;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff0f2;">
+    <div class="play-icon" style="
+        width: 30px;
+        height: 30px;
+        background: #e64a6b;
+        clip-path: polygon(0 0, 100% 50%, 0 100%);
+        margin-bottom: 8px;"></div>
+    <audio src="lala.mp3" controls style="
+        width: 90%;
+        height: 30px;
+    "></audio>
   </div>
-  <button class="backBtn" style="display:flex; align-items:center;">
-    <span style="transform:rotate(180deg); font-weight:bold; font-size:16px;">&#10148;</span> Volver
-  </button>
+  
+  <!-- BOTÓN DE REGRESO INTEGRADO FUNCIONAL -->
+  <button onclick="
+    surprise.classList.remove('show');
+    carouselWrap.style.display='block';
+    track.style.animationPlayState='running';
+    setTimeout(()=>{carouselWrap.scrollIntoView({behavior:'smooth'});},50);
+  " style="
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #f8c8d8;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 20px auto;
+">
+    <span style="display: inline-block; transform: rotate(180deg); font-weight: bold; font-size: 16px;">&#10148;</span>
+    Volver
+</button>
 </div>
-
-<!-- sorpresa carta -->
-<div class="surprise" id="surpriseCarta" style="display:none;">
-  <div style="display:flex; justify-content:center; align-items:center; flex-direction:column; position:relative; width:100%; height:100%;">
-    
-    <!-- buzón ORIGINAL TUYO (NO BORRADO) -->
-    <div class="buzon-container" style="position:relative; width:300px; height:250px;">
-
-      <div class="buzon" id="buzon" style="width:100%; height:100%; background:#e64a6b; border-radius:18px; display:flex; justify-content:center; align-items:flex-start; flex-direction:column; cursor:pointer; position:relative; overflow:hidden;">
-        <h2 style="color:white; text-align:center; margin-top:10px;">BUZÓN</h2>
-        <div class="tarjeta-cerrada" id="tarjetaCerrada" style="width:100px; height:60px; background:#fff0f2; border:2px dashed #fff; border-radius:8px; margin:auto; margin-top:20px; cursor:pointer;"></div>
-      </div>
-
-      <div class="tarjeta-abierta" id="tarjetaAbierta" style="position:absolute; top:20px; left:50%; transform:translateX(-50%) scale(0); width:350px; height:180px; display:flex; border-radius:12px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.25); transition:transform 0.7s;">
-        <div class="lado foto" style="width:50%; height:100%; background:#fff0f2;"><img src="foto.png" style="width:100%; height:100%; object-fit:cover;"></div>
-        <div class="lado texto" style="width:50%; height:100%; background:#fff; display:flex; align-items:center; justify-content:center; padding:10px; font-size:14px;">
-          <p>¡Aquí está tu mensaje secreto!</p>
-        </div>
-        <button onclick="cerrarTarjeta()" style="position:absolute; bottom:5px; right:5px; padding:4px 8px; background:#e64a6b; color:white; border:none; border-radius:6px; cursor:pointer;">Cerrar</button>
-      </div>
-    </div>
-
-    <!-- --- INTEGRACIÓN DEL BUZÓN REALISTA --- -->
-    <div style="margin-top:50px; display:flex; flex-direction:column; align-items:center;">
-      <div class="poste-real"></div>
-
-      <div class="buzon-real" id="buzonReal">
-        <img src="/mnt/data/3da36886-9d98-4e5a-b448-abee5ce7b1c0.png" class="carta-real" id="cartaReal">
-      </div>
-
-      <div class="tarjeta-real" id="tarjetaReal">
-        <p style="text-align:center;">Aquí despierta tu mensaje oculto…</p>
-      </div>
-    </div>
-
-    <button class="backBtn" style="display:flex; align-items:center; margin-top:20px;">
-      <span style="transform:rotate(180deg); font-weight:bold; font-size:16px;">&#10148;</span> Volver
-    </button>
-  </div>
-</div>
-
 </main>
 
 <script>
@@ -229,13 +180,7 @@ const checkBtn = document.getElementById('checkBtn');
 const codeInput = document.getElementById('codeInput');
 const carouselWrap = document.getElementById('carouselWrap');
 const track = document.getElementById('track');
-
-const surpriseSonido = document.getElementById('surpriseSonido');
-const surpriseCarta = document.getElementById('surpriseCarta');
-
-const buzon = document.getElementById('buzon');
-const tarjetaCerrada = document.getElementById('tarjetaCerrada');
-const tarjetaAbierta = document.getElementById('tarjetaAbierta');
+const surprise = document.getElementById('surprise');
 
 openBtn.addEventListener('click', ()=>{
   openBtn.style.display='none';
@@ -262,47 +207,13 @@ codeInput.addEventListener('keyup',(e)=>{ if(e.key === 'Enter') checkBtn.click()
 
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', ()=>{
-    if(card.dataset.index === "1"){
-      card.animate([{ transform: 'scale(1)' },{ transform: 'scale(1.05,0.6)' },{ transform: 'scale(1)' }],{ duration:450, easing:'ease' });
-      setTimeout(()=>{
-        surpriseSonido.style.display = 'flex';
-        surpriseSonido.classList.add('show');
-        carouselWrap.style.display = 'none';
-      },460);
-    } else if(card.dataset.index === "2"){
-      surpriseCarta.style.display = 'flex';
-      surpriseCarta.classList.add('show');
-      carouselWrap.style.display = 'none';
-    }
+    card.style.transformOrigin = 'center bottom';
+    card.animate([{ transform: 'scale(1)' },{ transform: 'scale(1.05,0.6)' },{ transform: 'scale(1)' }],{ duration:450, easing:'ease' });
+    setTimeout(()=>{
+      surprise.classList.add('show');
+      track.style.animationPlayState='paused';
+    },460);
   });
-});
-
-document.querySelectorAll('.backBtn').forEach(btn => {
-  btn.addEventListener('click', ()=>{
-    surpriseSonido.style.display = 'none';
-    surpriseCarta.style.display = 'none';
-    carouselWrap.style.display = 'block';
-    track.style.animationPlayState='running';
-  });
-});
-
-buzon.addEventListener('click', ()=> {
-  tarjetaAbierta.style.transform = 'translateX(-50%) scale(1)';
-  tarjetaCerrada.style.transform = 'translateY(-250px) scale(0)';
-});
-
-function cerrarTarjeta() {
-  tarjetaAbierta.style.transform = 'translateX(-50%) scale(0)';
-  tarjetaCerrada.style.transform = 'translateY(0) scale(1)';
-}
-
-/* --- INTEGRACIÓN: ANIMACIÓN CARTA REALISTA --- */
-const cartaReal = document.getElementById('cartaReal');
-const tarjetaReal = document.getElementById('tarjetaReal');
-
-cartaReal.addEventListener('click', () => {
-  cartaReal.classList.add('abrir');
-  tarjetaReal.classList.add('mostrar');
 });
 </script>
 </body>
