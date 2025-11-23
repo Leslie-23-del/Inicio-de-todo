@@ -103,13 +103,13 @@
       <!-- RECUADRO 2 -->
        
        <!-- Mitad video - mitad foto -->
-       <div class="box" style="width:%; text-align:center;min-height:400px;">
+       <div class="box" style="width:%; text-align:center;min-height:500px;">
 
       <video src="tocadiscos.mp4"
              autoplay loop muted
              style="
                width:100%;
-               height:400px;   /* CONTROL DEL LARGO */
+               height:500px;   /* CONTROL DEL LARGO */
                border-radius:12px;
                object-fit:cover;
                background:black;position:relative;z-index:10;">
