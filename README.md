@@ -90,12 +90,12 @@
     margin:auto;position:relative;z-index:10;">
      
       <!-- RECUADRO 1 -->
-      <div class="box" style="width:45%; text-align:center;min-height:400px;">
+      <div class="box" style="width:45%; text-align:center;min-height:500px;">
       <img src="foto.png"
            alt="Imagen sorpresa"
            style="
              width:100%;
-             height:400px;
+             height:500px;
              object-fit:cover;
              border-radius:12px;position:relative;z-index:10;">
       </div>
@@ -103,13 +103,13 @@
       <!-- RECUADRO 2 -->
        
        <!-- Mitad video - mitad foto -->
-       <div class="box" style="width:%; text-align:center;min-height:400px;">
+       <div class="box" style="width:%; text-align:center;min-height:500px;">
 
       <video src="tocadiscos.mp4"
              autoplay loop muted
              style="
                width:100%;
-               height:400px;   /* CONTROL DEL LARGO */
+               height:500px;   /* CONTROL DEL LARGO */
                border-radius:12px;
                object-fit:cover;
                background:black;position:relative;z-index:10;">
